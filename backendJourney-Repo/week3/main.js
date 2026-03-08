@@ -1,0 +1,57 @@
+//Variables & Data Types - Declare variables for a user profile with different data types, practice type checking with typeof, explore type coercion, and create template literals
+
+let userName = "Joy Smith";
+console.log(typeof userName); 
+let userAge = 30;
+console.log(typeof userAge);
+let isUserActive = true;
+console.log(typeof isUserActive);
+
+console.log("User Name: " + userName);
+console.log(`User Age: ${userAge}`);
+console.log(`Is User Active? : ${isUserActive}`);
+
+let newUserAge = userAge.toString();
+console.log(typeof newUserAge); 
+
+//Operators & Conditionals - Build a grade calculator that accepts scores and returns letter grades, handling invalid inputs using both if/else and switch statements
+let studentScore = prompt("Enter student's score (0-100):");
+// convert the input to a number
+studentScore = Number(studentScore);
+
+function calculateGrade(score) {
+    if (isNaN(score) || score < 0 || score > 100) {
+        return "Please enter a number between 0 and 100.";
+    } else {
+        switch (true) {
+            case (score >= 70):
+                return "A";
+            case (score >= 60):
+                return "B";
+            case (score >= 50):
+                return "C";
+            case (score >= 40):
+                return "D";
+        }
+    }
+}
+console.log(calculateGrade(studentScore));
+
+//String Manipulation Challenge - Build functions to convert strings to title case, count vowels, and reverse strings
+function toTitleCase(str) {
+    for (let i = 0; i < str.length; i++) {
+        str = str.toLowerCase();
+    }
+    return str;
+}
+
+console.log(toTitleCase("Hello World"));
+
+function reverseWord(str){
+    let reversedWord = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        reversed += str[i];
+    }
+    return reversedWord;
+}
+console.log(reverseWord("hello"));
