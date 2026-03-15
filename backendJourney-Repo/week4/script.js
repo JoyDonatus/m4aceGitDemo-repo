@@ -15,6 +15,38 @@ function multiplicationTableWhile(number) {
 }
 console.log(multiplicationTableWhile(Math.floor(Math.random() * 10) + 1));
 //Array Methods Practice - Work with a student dataset to practice filter, map, reduce, sort, some, and every methods for data transformation and analysis
+let students = ["Modupe", "Bimpe", "Skyscraper", "Joy", "MadMax"];
+//push
+students.push("Daenerys");
+console.log(students);
+//sort
+console.log(students.sort());
+//reverse
+console.log(students.reverse());
+//slice (New array from the first three students from the reversed array);
+const firstThreeStudents = students.slice(0, 3);
+console.log(firstThreeStudents);
+//splice (Replace MadMax and Joy in the array of students)
+students.splice(2, 2, "Emmanuel", "Samuel");
+console.log(students);
+// Delete Skyscraper
+students.splice(0, 1);
+console.log(students);
+//filter
+const newStudents = students.filter(a => a.length === 6);
+console.log(newStudents);
+
+let newHouses = [10, 2, 1, 5]
+let alphabe = ["d", "a", "r", "b", "c"]
+//push, pop, splice, slice, sort, filter, reduce 
+
+
+//console.log(houses);
+//console.log(newHouses.sort((a, b) => a - b));
+//console.log(newHouses.filter((a) => a < 5))
+//console.log(newHouses.filter((a) => a % 2 === 0))
+console.log(newHouses.reduce((a, b) => a + b, 0))
+console.log(newHouses.reduce((a, b) => a * b, 1))
 
 //Function Challenges - Implement an isPalindrome function to understand function creation and string manipulation
 
@@ -30,10 +62,10 @@ function reverseFunction(nameToReverse){
     }
     console.log(reversedName);
     if (reversedName === nameToReverse) {
-        return "The name is a palindrome";
+        return `${nameToReverse} is a palindrome`;
     }
     else {
-        return "The name is not a palindrome";
+        return `${nameToReverse} is not a palindrome`;
     }
 }
 
