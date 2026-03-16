@@ -33,3 +33,21 @@ for (const i of oruko){
     console.log(i);
 }
 }
+
+//for -in loop - used to iterate over the properties of an object
+const car = {name: 'GLE', color: 'Black', engine: 'v4'};
+
+for (const i in car){
+    console.log(i);
+}
+
+// for each loop - used to execute a provided function once for each array element
+students.forEach((student) =>{
+    console.log(student);
+});
+students.map((student) =>{
+    console.log(student);
+});
+
+//Array Manipulation
+const numbers = [1, 2, 3, 4, 5];

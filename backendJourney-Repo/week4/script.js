@@ -1,4 +1,4 @@
-//Loop Mastery - Create multiplication tables using nested loops and while loops to understand different iteration patterns
+//1. Loop Mastery - Create multiplication tables using nested loops and while loops to understand different iteration patterns
 function multiplicationTableFor(number) {
     for (let i = 1; i <= 10; i++) {
         console.log(`${number} x ${i} = ${number * i}`);
@@ -14,7 +14,8 @@ function multiplicationTableWhile(number) {
     }
 }
 console.log(multiplicationTableWhile(Math.floor(Math.random() * 10) + 1));
-//Array Methods Practice - Work with a student dataset to practice filter, map, reduce, sort, some, and every methods for data transformation and analysis
+
+//2. Array Methods Practice - Work with a student dataset to practice filter, map, reduce, sort, some, and every methods for data transformation and analysis
 let students = ["Modupe", "Bimpe", "Skyscraper", "Joy", "MadMax"];
 //push
 students.push("Daenerys");
@@ -36,19 +37,13 @@ console.log(students);
 const newStudents = students.filter(a => a.length === 6);
 console.log(newStudents);
 
-let newHouses = [10, 2, 1, 5]
+let newFigures = [10, 2, 1, 5]
 let alphabe = ["d", "a", "r", "b", "c"]
-//push, pop, splice, slice, sort, filter, reduce 
+//reduce 
+console.log(newFigures.reduce((a, b) => a + b, 0))
+console.log(newFigures.reduce((a, b) => a * b, 1))
 
-
-//console.log(houses);
-//console.log(newHouses.sort((a, b) => a - b));
-//console.log(newHouses.filter((a) => a < 5))
-//console.log(newHouses.filter((a) => a % 2 === 0))
-console.log(newHouses.reduce((a, b) => a + b, 0))
-console.log(newHouses.reduce((a, b) => a * b, 1))
-
-//Function Challenges - Implement an isPalindrome function to understand function creation and string manipulation
+//3. Function Challenges - Implement an isPalindrome function to understand function creation and string manipulation
 
 let nameToReverse = "Arya";
 

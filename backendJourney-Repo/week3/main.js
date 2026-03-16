@@ -15,8 +15,9 @@ let newUserAge = userAge.toString();
 console.log(typeof newUserAge); 
 
 //Operators & Conditionals - Build a grade calculator that accepts scores and returns letter grades, handling invalid inputs using both if/else and switch statements
-let studentScore = prompt("Enter student's score (0-100):");
+//let studentScore = prompt("Enter student's score (0-100):");
 // convert the input to a number
+let studentScore = 70
 studentScore = Number(studentScore);
 
 function calculateGrade(score) {
@@ -47,10 +48,28 @@ function toTitleCase(str) {
 
 console.log(toTitleCase("Hello World"));
 
+// count vowels
+let vowelCount = 0;
+let word = "Palindrome"
+
+function countVowel(str){
+    for(let i = 0; i < str.length; i++){
+        str = str.toLowerCase();
+    
+        if (str[i] === "a" || str[i] === "e" || str[i] === "i" || str[i] === "o" || str[i] === "u"){
+            vowelCount = vowelCount + 1
+        }
+    }
+    return `vowelCount is ${vowelCount}`; 
+}
+
+console.log(countVowel(word));
+
+
 function reverseWord(str){
     let reversedWord = "";
     for (let i = str.length - 1; i >= 0; i--) {
-        reversed += str[i];
+        reversedWord += str[i];
     }
     return reversedWord;
 }
