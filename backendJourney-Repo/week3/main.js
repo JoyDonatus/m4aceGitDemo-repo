@@ -40,13 +40,19 @@ console.log(calculateGrade(studentScore));
 
 //String Manipulation Challenge - Build functions to convert strings to title case, count vowels, and reverse strings
 function toTitleCase(str) {
+    let word ="";
     for (let i = 0; i < str.length; i++) {
-        str = str.toLowerCase();
+        if(i === 0){
+            word = str[i].toUpperCase();
+        }
+        else if(i > 0){
+            word = word + str[i].toLowerCase();
+        }
+        }
+        return word;
     }
-    return str;
-}
 
-console.log(toTitleCase("Hello World"));
+console.log(toTitleCase("HelloWorld"));
 
 // count vowels
 let vowelCount = 0;
