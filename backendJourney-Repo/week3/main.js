@@ -54,6 +54,40 @@ function toTitleCase(str) {
 
 console.log(toTitleCase("HelloWorld"));
 
+const myString = "a new Fat bigggy just as myself";
+
+function toTitleCaseTitleString(title){
+    title = title.toLowerCase();
+    let titleArray = title.split(" ");
+    let newWord;
+    let newWords;
+    let newArray = [];
+    let newTitleArray = "";
+     titleArray.map((words) => {
+        newWord = words;
+        if(words.length > 3){
+            newWord = toTitleCase(words);
+        }
+        console.log(newWord);
+        newArray.push(newWord);
+    })
+    for (let i = 0; i < newArray.length; i++){
+        newWords = newArray[i];
+        if (i === 0){
+             newWords = toTitleCase(newWords);
+        }
+        newTitleArray = newTitleArray + newWords + " ";
+    }
+        return newTitleArray;
+}
+    
+
+    
+
+
+console.log(toTitleCaseTitleString(myString));
+
+
 // count vowels
 let vowelCount = 0;
 let word = "Palindrome"

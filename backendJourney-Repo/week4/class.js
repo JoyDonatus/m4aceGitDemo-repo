@@ -28,6 +28,8 @@ for (const i of students){
     console.log(i);
 }
 const oruko = "Joy";
+console.log(oruko);
+console.log(oruko.toLowerCase());
 for (const i of oruko){
     if (i === 'o') {
     console.log(i);
