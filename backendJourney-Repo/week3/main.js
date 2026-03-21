@@ -54,9 +54,11 @@ function toTitleCase(str) {
 
 console.log(toTitleCase("HelloWorld"));
 
+//to TitleCase for a string of words
+
 const myString = "a new Fat bigggy just as myself";
 
-function toTitleCaseTitleString(title){
+function toTitleCaseStringOfWords(title){
     title = title.toLowerCase();
     let titleArray = title.split(" ");
     let newWord;
@@ -65,7 +67,7 @@ function toTitleCaseTitleString(title){
     let newTitleArray = "";
      titleArray.map((words) => {
         newWord = words;
-        if(words.length > 3){
+        if(words.length > 3 ){
             newWord = toTitleCase(words);
         }
         console.log(newWord);
@@ -80,12 +82,8 @@ function toTitleCaseTitleString(title){
     }
         return newTitleArray;
 }
-    
 
-    
-
-
-console.log(toTitleCaseTitleString(myString));
+console.log(toTitleCaseStringOfWords(myString));
 
 
 // count vowels

@@ -53,3 +53,31 @@ students.map((student) =>{
 
 //Array Manipulation
 const numbers = [1, 2, 3, 4, 5];
+
+const myString = "a new Fat bigggy just as myself";
+
+function toTitleCaseStringOfWords(title){
+    title = title.toLowerCase().split(" ");
+    let newWord;
+    let finalTitle = "";
+     title.map((words, index) => {
+        newWord = "";
+        if (index === 0  || words.length > 3){
+            for(let i = 0; i < words.length; i++){
+                if(i === 0){
+                    newWord = words[i].toUpperCase();
+                }
+                else{
+                    newWord = newWord + words[i];
+                }   
+            }
+        }
+        else if (index > 0 && words.length <= 3){
+            newWord = words;
+        }
+        finalTitle = finalTitle + newWord + " ";
+    })
+   return finalTitle.trim();
+}
+
+console.log(toTitleCaseStringOfWords(myString));
