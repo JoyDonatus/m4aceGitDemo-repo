@@ -56,3 +56,9 @@ const numbers = [1, 2, 3, 4];
 const [first, ...others] = numbers;
 console.log(first);
 console.log(others);
+
+//Object Fundamentals - Create a user object with nested properties and methods including getFullName, incrementAge, addHobby, and getAddress functions
+
+
+
+//Destructuring & Spread Practice - Practice object and array destructuring with renaming and default values, nested destructuring, function parameter destructuring, and spread operator for merging and cloning
