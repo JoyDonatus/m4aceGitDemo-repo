@@ -55,6 +55,14 @@ console.log(states);
 const newUser = { ...user };
 console.log(newUser.getAddress());
 
+//function destructuring
+
+function greet({ newfirstName }){
+  return `Good Morning ${newfirstName}`;
+}
+
+console.log(greet({newfirstName}));
+
 //spread operator for merging
 
 const newUser1 = { ...newUser, clothing: ["Givenchi", "Naija Made"]};
