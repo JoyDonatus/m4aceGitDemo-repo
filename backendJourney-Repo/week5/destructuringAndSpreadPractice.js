@@ -20,11 +20,13 @@ const user = {
     },
 
     incrementAge(){
-        return `${this.age + 1}`;
+        this.age += 1;
+        return this.age;
     }, 
     
     addHobby(hobby){
-        return `${this.hobbies.push(hobby)}`;
+        this.hobbies.push(hobby);
+        return this.hobbies;
     }, 
     
     getAddress(){

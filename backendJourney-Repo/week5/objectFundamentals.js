@@ -17,11 +17,13 @@ const user = {
     },
 
     incrementAge(){
-        return `${this.age + 1}`;
+        this.age += 1;
+        return this.age;
     }, 
     
     addHobby(hobby){
-        this.hobbies.push(hobby)
+        this.hobbies.push(hobby);
+        return this.hobbies;
     }, 
     
     getAddress(){
@@ -51,12 +53,14 @@ class User{
     }
 
     incrementAge(){
-        return `${this.age + 1}`;
-    }
+        this.age += 1;
+        return this.age;
+    } 
     
     addHobby(hobby){
-        return `${this.hobbies.push(hobby)}`;
-    }
+        this.hobbies.push(hobby);
+        return this.hobbies;
+    } 
     
     getAddress(){
         return `${this.address.street}, ${this.address.city}, ${this.address.state} ${this.address.country}`
@@ -69,8 +73,7 @@ const user2 = new User("Abass", "Odo", 31, ["dancing", "freelancing", "content m
 console.log(user1.getAddress());
 console.log(user1.getFullName());
 
-user1.addHobby("flexing");
-console.log(user1.hobbies);
+console.log(user1.addHobby("flexing"));
 
 console.log(user2.getAddress());
 
