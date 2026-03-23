@@ -21,7 +21,7 @@ const user = {
     }, 
     
     addHobby(hobby){
-        return `${this.hobbies.push(hobby)}`;
+        this.hobbies.push(hobby)
     }, 
     
     getAddress(){
@@ -32,6 +32,7 @@ const user = {
 console.log(user.getAddress());
 user.addHobby("eating");
 console.log(user.hobbies);
+console.log(user.incrementAge());
 
 
 //creating object using class
