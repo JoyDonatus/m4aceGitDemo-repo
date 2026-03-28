@@ -46,10 +46,10 @@ for (const i in car){
 // for each loop - used to execute a provided function once for each array element
 students.forEach((student) =>{
     console.log(student);
-});
+});//use for each when you don't need the result of or you just want to work on the item
 students.map((student) =>{
     console.log(student);
-});
+});// use when you want a return.
 
 //Array Manipulation
 const numbers = [1, 2, 3, 4, 5];
