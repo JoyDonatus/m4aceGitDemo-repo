@@ -61,3 +61,11 @@ const secondSet = new Set([3, 4, 5, 6]);
 //union (merging two sets with spread operator)
 const newSet = new Set([...firstSet, ...secondSet]);
 console.log(newSet);
+
+//intersection (finding common elements between two sets)
+const newSetIntersection = new Set([...firstSet].filter(x => secondSet.has(x)));
+console.log(newSetIntersection);
+
+//difference (finding unique elements in the first set that are not in the second set)
+const newSetDifference = new Set([...firstSet].filter(x => !secondSet.has(x)));
+console.log(newSetDifference);
