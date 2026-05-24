@@ -4,21 +4,31 @@ const url = require('url');
 //  Implement routing for different paths and HTTP methods, 
 const serverA =http.createServer(function (request, response) {
 
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-
     const parsedUrl = url.parse(request.url, true).query; // Parse the query string
     const path = url.parse(request.url).pathname; // Get the path from the URL
-    if (path === '/') {
+
+     if (path === '/' && request.method === 'GET') {
+        response.writeHead(200, { 'Content-Type': 'text/plain' });
         response.write("Welcome to the Home Page!");
         response.end();
     }
 
-    else if (path === '/about') {
+    else if (path === '/about' && request.method === 'GET') {
+        response.writeHead(200, { 'Content-Type': 'text/plain' });
         response.write("Welcome to the About Page!");
         response.end();
     }
-    else if (path === '/user') {
-        response.write(`Welcome to the User Page! Your query parameters are : ${JSON.stringify(parsedUrl)}`);
+
+    else if (path === '/user' && request.method === 'GET') {
+        response.writeHead(200, { 'Content-Type': 'text/plain' });
+        response.write(
+            `Welcome to the User Page!\nYear: ${parsedUrl.year}\nMonth: ${parsedUrl.month}`
+        );
+        response.end();
+    }
+    else {
+        response.writeHead(404,{ 'Content-Type': 'text/plain' });
+        response.write("Page Not Found");
         response.end();
     }
 })
