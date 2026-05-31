@@ -1,0 +1,6 @@
+INFO User logged in
+INFO Page loaded
+ERROR Database connection failed
+INFO User clicked button
+ERROR Payment failed
+INFO Logout successful

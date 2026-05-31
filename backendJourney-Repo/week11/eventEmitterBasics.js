@@ -159,9 +159,6 @@ userManager.once("add", (user) => {
 });
 
 
-// =========================
-// TESTING
-// =========================
 
 // First add
 userManager.addUser({

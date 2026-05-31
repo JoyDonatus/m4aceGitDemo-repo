@@ -40,18 +40,18 @@ serverA.listen(8081, () => {
 
 // handle route parameters and query strings
 
-// const server =http.createServer(function (request, response) {
+const server =http.createServer(function (request, response) {
 
-//     response.writeHead(200, { 'Content-Type': 'text/plain' });
+    response.writeHead(200, { 'Content-Type': 'text/plain' });
 
-//     const parsedUrl = url.parse(request.url, true).query; // Parse the query string
-//     const txt = `${parsedUrl.year} ${parsedUrl.month}`; // Get year and month from query string
+    const parsedUrl = url.parse(request.url, true).query; // Parse the query string
+    const txt = `${parsedUrl.year} ${parsedUrl.month}`; // Get year and month from query string
 
 
-//     response.write(`Welcome to our website! Your query parameters are : ${txt}`);
-//     response.end();
-// })
+    response.write(`Welcome to our website! Your query parameters are : ${txt}`);
+    response.end();
+})
 
-// server.listen(8080, () => {
-//     console.log('Server running at http://localhost:8080/');
-// });
+server.listen(8080, () => {
+    console.log('Server running at http://localhost:8080/');
+});
