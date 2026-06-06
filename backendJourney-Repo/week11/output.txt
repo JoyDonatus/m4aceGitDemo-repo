@@ -1,0 +1,7 @@
+Hello Joy! I am writing this text into the stream.
+This is a second line of text.INFO User logged in
+INFO Page loaded
+ERROR Database connection failed
+INFO User clicked button
+ERROR Payment failed
+INFO Logout successful

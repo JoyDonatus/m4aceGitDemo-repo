@@ -1,75 +1,48 @@
 //Real-World Project: Log Processor - 
 // Build a log file processor using streams and events to parse, filter, and analyze log files efficiently
 
-const fs = require("fs");
-const readline = require("readline");
-const EventEmitter = require("events");
+const fs = require('fs');
+const { Transform } = require('stream');
+const EventEmitter = require('events');
 
-// Create custom class
-class LogProcessor extends EventEmitter {
-  constructor(filePath) {
-    super();
 
-    this.filePath = filePath;
-    this.errorCount = 0;
-  }
+const alertSystem = new EventEmitter();
 
-  // Start processing logs
-  processLogs() {
+alertSystem.on('criticalError', (errorMessage) => {
+    console.log(`🚨 ALERT SYSTEM TRIGGERED: ${errorMessage}`);
+});
 
-    // Create read stream
-    const stream = fs.createReadStream(this.filePath);
+class LogFilter extends Transform {
+    constructor(emitter) {
+        super();
+        this.emitter = emitter; 
+    }
 
-    // Read line by line
-    const rl = readline.createInterface({
-      input: stream,
-      crlfDelay: Infinity,
-    });
+    _transform(chunk, _encoding, callback) {
+        const logData = chunk.toString();
+        
+        const lines = logData.split('\n');
 
-    // When a new line is read
-    rl.on("line", (line) => {
+        lines.forEach(line => {
+            // Check if the line contains an ERROR tag
+            if (line.includes('ERROR:')) {
+                this.emitter.emit('criticalError', line.trim());
+                
+                this.push(line + '\n');
+            }
+        });
 
-      // Emit event for every line
-      this.emit("lineRead", line);
-
-      // Filter ERROR logs
-      if (line.includes("ERROR")) {
-
-        this.errorCount++;
-
-        // Emit error event
-        this.emit("errorLog", line);
-      }
-    });
-
-    // When reading is complete
-    rl.on("close", () => {
-
-      // Emit complete event
-      this.emit("done", this.errorCount);
-    });
-  }
+        callback();
+    }
 }
 
-// Create object
-const processor = new LogProcessor("log.txt");
+// 3. Assemble and execute the stream pipeline
+const reader = fs.createReadStream('server.log');
+const processor = new LogFilter(alertSystem);
+const writer = fs.createWriteStream('errors_only.log');
 
-// Runs for every line
-processor.on("lineRead", (line) => {
-  console.log("Line Read:", line);
+reader.pipe(processor).pipe(writer);
+
+writer.on('finish', () => {
+    console.log('\n Log file processing complete. Cleaned errors saved to errors_only.log');
 });
-
-// Runs only for ERROR logs
-processor.on("errorLog", (line) => {
-  console.log("ERROR FOUND:", line);
-});
-
-// Runs when processing finishes
-processor.on("done", (count) => {
-  console.log("\nLog processing complete");
-  console.log("Total Errors:", count);
-});
-
-
-// Start processing
-processor.processLogs();
