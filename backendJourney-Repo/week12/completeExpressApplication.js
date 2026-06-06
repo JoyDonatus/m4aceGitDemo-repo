@@ -9,10 +9,8 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-// Middleware to parse JSON data
 app.use(express.json());
 
-// In-memory database
 let blogs = [
   {
     id: 1,
@@ -21,12 +19,10 @@ let blogs = [
   }
 ];
 
-// GET all blogs
 app.get("/blogs", (req, res) => {
   res.status(200).json(blogs);
 });
 
-// GET a single blog by ID
 app.get("/blogs/:id", (req, res) => {
   const id = Number(req.params.id);
 
@@ -41,11 +37,9 @@ app.get("/blogs/:id", (req, res) => {
   res.status(200).json(blog);
 });
 
-// CREATE a new blog
 app.post("/blogs", (req, res) => {
   const { title, content } = req.body;
 
-  // Validation
   if (!title || !content) {
     return res.status(400).json({
       message: "Title and content are required"
@@ -66,7 +60,6 @@ app.post("/blogs", (req, res) => {
   });
 });
 
-// UPDATE a blog
 app.put("/blogs/:id", (req, res) => {
   const id = Number(req.params.id);
 
@@ -95,7 +88,6 @@ app.put("/blogs/:id", (req, res) => {
   });
 });
 
-// DELETE a blog
 app.delete("/blogs/:id", (req, res) => {
   const id = Number(req.params.id);
 
@@ -114,14 +106,13 @@ app.delete("/blogs/:id", (req, res) => {
   });
 });
 
-// Handle unknown routes
 app.use((req, res) => {
   res.status(404).json({
     message: "Route not found"
   });
 });
 
-// Start server
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

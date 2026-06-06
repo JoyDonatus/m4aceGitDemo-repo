@@ -5,124 +5,62 @@
 // and error handling middleware
 
 
-const express = require("express");
-
+const express = require('express');
 const app = express();
 const PORT = 3000;
 
-/* ==========================
-   BUILT-IN MIDDLEWARE
-========================== */
 
-// Parse JSON requests
 app.use(express.json());
 
-// Serve static files
-app.use(express.static("public"));
+app.use(express.static('public'));
 
-/* ==========================
-   CUSTOM LOGGING MIDDLEWARE
-========================== */
 
-const logger = (req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
-    next();
-};
-
-app.use(logger);
-
-/* ==========================
-   REQUEST TIMING MIDDLEWARE
-========================== */
-
-const requestTimer = (req, res, next) => {
-    const startTime = Date.now();
-
-    res.on("finish", () => {
-        const endTime = Date.now();
-        const duration = endTime - startTime;
-
-        console.log(`Request took ${duration} ms`);
+app.use((req, res, next) => {
+    const startTime = Date.now(); 
+    res.on('finish', () => {
+        const duration = Date.now() - startTime; // Calculate total time taken
+        console.log(`[LOG] ${req.method} ${req.url} - Status: ${res.statusCode} (${duration}ms)`);
     });
 
-    next();
-};
+    next(); 
+});
 
-app.use(requestTimer);
 
-/* ==========================
-   AUTHENTICATION MIDDLEWARE
-========================== */
+const checkAuth = (req, res, next) => {
+    const authToken = req.headers['authorization'];
 
-const authenticate = (req, res, next) => {
-    const apiKey = req.headers["api-key"];
-
-    if (!apiKey) {
-        return res.status(401).json({
-            message: "Access denied. API key required."
-        });
+    if (authToken === 'secret-joy-token') {
+        next(); 
+    } else {
+        res.status(401).json({ error: "Unauthorized access! Valid token missing." });
     }
-
-    if (apiKey !== "12345") {
-        return res.status(403).json({
-            message: "Invalid API key."
-        });
-    }
-
-    next();
 };
 
-/* ==========================
-   ROUTES
-========================== */
-
-// Public Route
-app.get("/", (req, res) => {
-    res.send("Welcome to the Home Page");
+app.get('/api/public', (req, res) => {
+    res.send("This data is public. Anyone can see this!");
 });
 
-// JSON Route
-app.post("/data", (req, res) => {
-    res.json({
-        receivedData: req.body
-    });
+app.get('/api/dashboard', checkAuth, (req, res) => {
+    res.send("🔒 Welcome to the secure admin dashboard, Joy!");
 });
 
-// Protected Route
-app.get("/dashboard", authenticate, (req, res) => {
-    res.json({
-        message: "Welcome to the dashboard"
-    });
+app.get('/api/simulate-error', (req, res, next) => {
+    try {
+        throw new Error("Something went horribly wrong with the server database!");
+    } catch (err) {
+        next(err); 
+    }
 });
-
-// Route that intentionally throws an error
-app.get("/error", (req, res, next) => {
-    const error = new Error("Something went wrong!");
-    next(error);
-});
-
-/* ==========================
-   404 HANDLER
-========================== */
-
-app.use((req, res) => {
-    res.status(404).json({
-        message: "Route not found"
-    });
-});
-
-/* ==========================
-   ERROR HANDLING MIDDLEWARE
-========================== */
-
 app.use((err, req, res, next) => {
-    console.error(err.message);
-
-    res.status(500).json({
-        message: err.message
+    console.error(`💥 ERROR DETECTED: ${err.message}`);
+    
+    res.status(500).json({ 
+        status: "Fail",
+        message: "Internal Server Error",
+        errorDetails: err.message 
     });
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Middleware lab running on http://localhost:${PORT}`);
 });
