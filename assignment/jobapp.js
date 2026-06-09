@@ -6,7 +6,7 @@
     // PUT /jobs/:id - update details or status
     // DELETE /jobs/:id - remove an application
 
-    const express = require('express');
+const express = require('express');
 const app = express();
 
 app.use(express.json());
@@ -32,10 +32,12 @@ app.post('/jobs', (req, res) => {
         status: status
     }
 
-    jobApplications.push(newApplication);
+    jobApplications.push(newApplication); 
 
-
-       
+    res.status(201).json({
+    message: "Job application created successfully",
+    Application: newJobApplication
+  });
 
 })
 
