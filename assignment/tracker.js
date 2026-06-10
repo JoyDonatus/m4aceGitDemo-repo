@@ -1,11 +1,5 @@
 //Assignment 2: Expense Tracker:
 
-   
-    
-    
-    
-    
-
     const express = require('express');
     const app = express();
     
@@ -52,17 +46,24 @@ app.get('/transactions', (req, res) => {
 // GET /transactions/:id
 app.get('/transactions/:id', (req, res) => {
     const transactionId = parseInt(req.params.id);
-    const transaction = transactions.find(u => u.id === transactionId);
-    res.status(200).json(transaction);
+    const transactionWithId = transactions.find(transaction => transaction.id === transactionId);
+
+    if (!transactionWithId) {
+        return res.status(404).json({ message: `${transactionId} transaction not found` });
+    }
+    else{
+        return res.status(200).json(transactionWithId);
+    }
+    
 });
 
 // PUT /transactions/:id
 
 app.put('/transactions/:id', (request, response) => {
     const transactionId = parseInt(request.params.id);
-    const transaction = transactions.findIndex(transaction => transaction.id === transactionId);
+    const transaction = transactions.find(transaction => transaction.id === transactionId);
 
-    if (transaction < 0){
+    if (!transaction) {
         return response.status(404).json({message: `${transactionId} transaction not found`});
     }
 
