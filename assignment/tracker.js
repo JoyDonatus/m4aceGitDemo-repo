@@ -4,7 +4,7 @@
     
     
     
-    // DELETE /transactions/:id
+    
 
     const express = require('express');
     const app = express();
@@ -60,11 +60,6 @@ app.get('/transactions/:id', (req, res) => {
 
 app.put('/transactions/:id', (request, response) => {
     const transactionId = parseInt(request.params.id);
-    const transaction = transactions.find(u => u.id === transactionId);
-});
-
-app.put('/transactions/:id', (request, response) => {
-    const transactionId = parseInt(request.params.id);
     const transaction = transactions.findIndex(transaction => transaction.id === transactionId);
 
     if (transaction < 0){
@@ -93,7 +88,7 @@ app.delete('/transactions/:id', (request, response) => {
     else{
 
         transactions.splice(transactionToDelete, 1);
-        response.status(200).json({ message: "Transaction deleted successfully", transactionId: transactionId});
+        return response.status(200).json({ message: "Transaction deleted successfully", transactionId: transactionId});
     }
 });
 
