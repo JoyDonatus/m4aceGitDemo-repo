@@ -1,0 +1,1 @@
+//Integrate with Cloudinary for cloud file storage

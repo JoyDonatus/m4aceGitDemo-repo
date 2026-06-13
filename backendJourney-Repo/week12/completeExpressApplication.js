@@ -24,7 +24,7 @@ app.get("/blogs", (req, res) => {
 });
 
 app.get("/blogs/:id", (req, res) => {
-  const id = Number(req.params.id);
+  const id = parseInt(req.params.id);
 
   const blog = blogs.find(blog => blog.id === id);
 
@@ -61,7 +61,7 @@ app.post("/blogs", (req, res) => {
 });
 
 app.put("/blogs/:id", (req, res) => {
-  const id = Number(req.params.id);
+  const id = parseInt(req.params.id);
 
   const blog = blogs.find(blog => blog.id === id);
 

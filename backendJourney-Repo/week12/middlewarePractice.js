@@ -41,7 +41,7 @@ app.get('/api/public', (req, res) => {
 });
 
 app.get('/api/dashboard', checkAuth, (req, res) => {
-    res.send("🔒 Welcome to the secure admin dashboard, Joy!");
+    res.send("Welcome to the secure admin dashboard, Joy!");
 });
 
 app.get('/api/simulate-error', (req, res, next) => {
@@ -52,7 +52,7 @@ app.get('/api/simulate-error', (req, res, next) => {
     }
 });
 app.use((err, req, res, next) => {
-    console.error(`💥 ERROR DETECTED: ${err.message}`);
+    console.error(`ERROR DETECTED: ${err.message}`);
     
     res.status(500).json({ 
         status: "Fail",

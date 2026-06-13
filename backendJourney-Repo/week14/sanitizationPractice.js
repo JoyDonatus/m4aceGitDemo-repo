@@ -1,0 +1,1 @@
+//Sanitize string inputs, normalize emails, trim whitespace, and escape HTML
