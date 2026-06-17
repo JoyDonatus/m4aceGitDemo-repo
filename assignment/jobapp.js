@@ -8,6 +8,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const Job = require('./models/job');
 const jobRoutes = require('./routes/jobAppRoutes');
 
 const app = express();
@@ -17,17 +18,18 @@ const port = process.env.PORT;
 const DB_URL = process.env.MONGO_URI;
 
 let jobApplications = [
-    { id: 1, company: "Google", role: "Frontend Developer", dateApplied: "2026-06-01", status: "Interviewing" },
-    { id: 2, company: "Stripe", role: "Backend Engineer", dateApplied: "2026-06-04", status: "Applied" }
+    { id: 1, company: "Google", role: "Frontend Developer", status: "Interviewing", dateApplied: "2026-06-01" },
+    { id: 2, company: "Stripe", role: "Backend Engineer", status: "Applied", dateApplied: "2026-06-04" }
 ];
 
 mongoose.connect(DB_URL)
-    .then(async() => {console.log("Connected to Job Database successfully! 💼")
+    .then(async() => {console.log("Connected to Job Database successfully!")
         const count = await Job.countDocuments();
                 if (count === 0) {
-                    await Job.insertMany(initialJobs);
-                    console.log("Initial applications seeded to the cloud! 🌱");
-                }})
+                    await Job.insertMany(jobApplications);
+                    console.log("Initial applications seeded to the cloud!");
+                }}
+        )
     .catch((err) => console.error("Database connection failure:", err));
 
     app.use('/api', jobRoutes);
