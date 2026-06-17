@@ -10,6 +10,7 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
+const port = process.env.PORT;
 
 let jobApplications = [
     { id: 1, company: "Google", role: "Frontend Developer", dateApplied: "2026-06-01", status: "Interviewing" },
@@ -100,6 +101,6 @@ app.delete('/jobs/:id', (req, res) => {
 
 })
 
-app.listen(3000, () => {
-    console.log(`Server is running on http://localhost:3000`);
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
