@@ -1,0 +1,1 @@
+//Create custom validation rules for unique emails, age restrictions, and phone numbers

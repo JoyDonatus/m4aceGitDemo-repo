@@ -1,0 +1,5 @@
+[2026-06-06 12:00:01] INFO: Server started on port 3000
+[2026-06-06 12:05:22] WARN: Database connection latency high
+[2026-06-06 12:10:45] ERROR: Authentication failed for user 'Joy'
+[2026-06-06 12:15:11] INFO: Static assets served successfully
+[2026-06-06 12:20:30] ERROR: Database connection lost connection timeout

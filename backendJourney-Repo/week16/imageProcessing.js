@@ -1,0 +1,1 @@
+//Resize uploaded images and convert formats using Sharp library

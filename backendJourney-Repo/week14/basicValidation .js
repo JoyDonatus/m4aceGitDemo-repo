@@ -1,0 +1,1 @@
+//Implement validation for user registration (email format, password strength, required fields)
