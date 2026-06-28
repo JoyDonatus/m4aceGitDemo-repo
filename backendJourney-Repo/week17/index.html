@@ -1,0 +1,126 @@
+<script>
+
+ const dueDatePopUpContainer = document.querySelector('#jupiterx-popups-1228');
+ 
+ const dueDateWatchTrailer = dueDatePopUpContainer.querySelector("#dueDateWatchTrailer");
+ 
+ const dueDateMobileWatchTrailer = dueDatePopUpContainer.querySelector("#dueDateMobileWatchTrailer");
+ 
+ const dueDateMobileHeroImageContainer = dueDatePopUpContainer.querySelector("#dueDateMobileHeroImageContainer")
+
+ const dueDatePopUpVideoContainer = dueDatePopUpContainer.querySelector("#dueDatePopUpVideoContainer");
+ 
+ const dueDateSynopsis = dueDatePopUpContainer.querySelector("#dueDateSynopsis");
+ 
+ const dueDateIframeVideo = dueDatePopUpContainer.querySelector("#dueDateIframeVideo");
+ 
+ const dueDateThumbnail = dueDatePopUpContainer.querySelector("#dueDateThumbnail");
+ 
+ const dueDatePlayButton = dueDatePopUpContainer.querySelector("#dueDatePlayButton");
+ 
+ const dueDatePopUpCloseButton = dueDatePopUpContainer.querySelector("#dueDatePopUpCloseButton");
+ 
+
+dueDateWatchTrailer.addEventListener('click', () => {
+    
+     if (dueDatePopUpVideoContainer.style.display === 'flex'){
+        dueDatePopUpVideoContainer.style.display = 'none';
+            
+        dueDateSynopsis.style.display = 'flex';
+        
+        dueDateWatchTrailer.textContent = 'Watch Trailer';
+            
+        dueDateIframeVideo.src="";
+        
+       dueDatePlayButton.style.display = 'none';
+     
+        dueDateThumbnail.style.display = 'none';
+            
+        }
+        
+        else{
+    
+       dueDateSynopsis.style.display = 'none';
+    
+    dueDatePopUpVideoContainer.style.display = 'flex';
+    
+    dueDateWatchTrailer.textContent = 'Back To Details';
+        
+        dueDatePlayButton.style.display = 'block';
+     
+        dueDateThumbnail.style.display = 'block';
+        
+        }
+})
+
+dueDateMobileWatchTrailer.addEventListener('click', () => {
+    
+     if (dueDatePopUpVideoContainer.style.display === 'flex'){
+        dueDatePopUpVideoContainer.style.display = 'none';
+            
+            dueDateMobileHeroImageContainer.style.display = 'flex';
+        dueDateSynopsis.style.display = 'flex';
+        
+        dueDateMobileWatchTrailer.textContent = 'Watch Trailer';
+            
+        dueDateIframeVideo.src="";
+        
+       dueDatePlayButton.style.display = 'none';
+     
+        dueDateThumbnail.style.display = 'none';
+            
+        }
+        
+    else{
+    
+    dueDateSynopsis.style.display = 'none';
+    
+    dueDatePopUpVideoContainer.style.display = 'flex';
+    
+    dueDateMobileWatchTrailer.textContent = 'Back To Details';
+    
+    dueDateMobileHeroImageContainer.style.display = 'none';
+        
+    dueDatePlayButton.style.display = 'block';
+    
+     
+    dueDateThumbnail.style.display = 'block';
+        
+        }
+})
+
+function dueDatePlayVideo() {
+    
+    dueDateIframeVideo.src= "https://www.youtube.com/embed/sasnzj3ZB9g?si=tD1CNR6Wwtpbm4n2&autoplay=1";
+    
+    dueDateIframeVideo.style.display = 'block';
+    
+    dueDatePlayButton.style.display = 'none';
+        
+    setTimeout(() => {
+        dueDateThumbnail.style.display = 'none';}, 1100);
+   
+}
+
+dueDatePlayButton.addEventListener('click', dueDatePlayVideo);
+
+dueDatePopUpCloseButton.addEventListener('click', () => {
+   dueDateIframeVideo.src="";
+   
+   dueDateMobileHeroImageContainer.style.display = 'flex';
+   
+   dueDateMobileWatchTrailer.textContent = 'Watch Trailer';
+    
+   dueDatePopUpVideoContainer.style.display = 'none';
+    
+   dueDateSynopsis.style.display = 'flex';
+    
+   dueDateIframeVideo.style.display = "none";
+    
+dueDateThumbnail.style.display="block";
+     
+    dueDatePlayButton.style.display = "block";
+
+        });
+
+</script>
