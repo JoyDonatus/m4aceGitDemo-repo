@@ -1,6 +1,6 @@
-const Job = require('../models/job');
+import Job from '../models/job.js';
 
-exports.createApplication = async (req, res) => {
+export const createApplication = async (req, res) => {
     try {
         const newJob = await Job.create(req.body);
         res.status(201).json(newJob);
@@ -9,7 +9,7 @@ exports.createApplication = async (req, res) => {
     }
 };
 
-exports.getApplication = async (req, res) => {
+export const getApplication = async (req, res) => {
     try {
         const jobs = await Job.find({});
         res.status(200).json(jobs);
@@ -18,7 +18,7 @@ exports.getApplication = async (req, res) => {
     }
 };
 
-exports.getAllApplications = async (req, res) => {
+export const getAllApplications = async (req, res) => {
     try {
         const jobs = await Job.find({});
         res.status(200).json(jobs);
@@ -27,7 +27,7 @@ exports.getAllApplications = async (req, res) => {
     }
 };
 
-exports.getApplicationById = async (req, res) => {
+export const getApplicationById = async (req, res) => {
     try {
         const jobId = req.params.id;
         const job = await Job.findById(jobId);
@@ -40,7 +40,7 @@ exports.getApplicationById = async (req, res) => {
     }
 };
 
-exports.updateApplication = async (req, res) => {
+export const updateApplication = async (req, res) => {
     try {
         const jobId = req.params.id;
         const job = await Job.findById(jobId);
@@ -55,7 +55,7 @@ exports.updateApplication = async (req, res) => {
     }
 };
 
-exports.deleteApplication = async (req, res) => {
+export const deleteApplication = async (req, res) => {
     try {
         const jobId = req.params.id;
         const job = await Job.findByIdAndDelete(jobId);

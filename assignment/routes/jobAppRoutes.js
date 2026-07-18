@@ -1,11 +1,23 @@
-const express = require('express');
+import express from "express";
+import { protect } from '../middleware/authMiddleware.js';
+
+import { 
+  getAllApplications, 
+  createApplication, 
+  getApplicationById, 
+  updateApplication, 
+  deleteApplication 
+} from '../controllers/jobAppController.js';
+
+//import jobAppController from '../controllers/jobAppController.js';
 const router = express.Router();
 
-const jobAppController = require('../controllers/jobAppController');
+router.get('/', getAllApplications);
+router.post('/jobs', protect, createApplication);
+router.get('/jobs', getAllApplications);
+router.get('/jobs/:id', getApplicationById);
+router.put('/jobs/:id', protect, updateApplication);
+router.delete('/jobs/:id', protect, deleteApplication);
 
-router.post('/jobs', jobAppController.createApplication);
-router.get('/jobs', jobAppController.getAllApplications);
-router.get('/jobs/:id', jobAppController.getApplicationById);
-router.put('/jobs/:id', jobAppController.updateApplication);
-router.delete('/jobs/:id', jobAppController.deleteApplication);
-module.exports = router;
+//module.exports = router;
+export default router;

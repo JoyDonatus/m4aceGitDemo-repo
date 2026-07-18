@@ -5,11 +5,13 @@
     // GET /jobs/:id - get a single application
     // PUT /jobs/:id - update details or status
     // DELETE /jobs/:id - remove an application
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const Job = require('./models/job');
-const jobRoutes = require('./routes/jobAppRoutes');
+import dotenv from 'dotenv';
+dotenv.config();
+import express from 'express';
+import mongoose from 'mongoose';
+import Job from './models/job.js';
+import jobRoutes from './routes/jobAppRoutes.js';
+import userRoutes from './routes/jobAppUserRoutes.js';
 
 const app = express();
 
@@ -18,8 +20,8 @@ const port = process.env.PORT;
 const DB_URL = process.env.MONGO_URI;
 
 let jobApplications = [
-    { id: 1, company: "Google", role: "Frontend Developer", status: "Interviewing", dateApplied: "2026-06-01" },
-    { id: 2, company: "Stripe", role: "Backend Engineer", status: "Applied", dateApplied: "2026-06-04" }
+    { company: "Google", role: "Frontend Developer", status: "Interviewing", dateApplied: "2026-06-01" },
+    { company: "Stripe", role: "Backend Engineer", status: "Applied", dateApplied: "2026-06-04" }
 ];
 
 mongoose.connect(DB_URL)
@@ -32,7 +34,8 @@ mongoose.connect(DB_URL)
         )
     .catch((err) => console.error("Database connection failure:", err));
 
-    app.use('/api', jobRoutes);
+    app.use('/api/v1/job', jobRoutes);
+    app.use('/api/v1/auth', userRoutes);
 
 // app.post('/jobs', (req, res) => {
 //     const company = req.body.company;
