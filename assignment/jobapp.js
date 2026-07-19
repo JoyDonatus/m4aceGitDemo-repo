@@ -30,8 +30,11 @@ mongoose.connect(DB_URL)
                 if (count === 0) {
                     await Job.insertMany(jobApplications);
                     console.log("Initial applications seeded to the cloud!");
-                }}
-        )
+                }
+                app.listen(port, () => {
+                    console.log(`Server is running on http://localhost:${port}`);
+                });
+        })
     .catch((err) => console.error("Database connection failure:", err));
 
     app.use('/api/v1/job', jobRoutes);
@@ -121,6 +124,6 @@ mongoose.connect(DB_URL)
 
 // })
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`Server is running on http://localhost:${port}`);
+// });

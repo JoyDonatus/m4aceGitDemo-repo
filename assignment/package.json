@@ -4,9 +4,10 @@
   "type": "module",
   "main": "jobapp.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node jobapp.js",
-    "dev": "nodemon jobapp.js"
+    "dev": "nodemon jobapp.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "keywords": [],
   "author": "",
